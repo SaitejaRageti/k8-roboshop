@@ -20,9 +20,10 @@ spec:
 # This is pod definition
   template:
     metadata:
-      project: roboshop
-      component: mongodb
-      tier: database
+      labels:
+        project: roboshop
+        component: mongodb
+        tier: database
     spec:
       containers:
         - name: mongodb
