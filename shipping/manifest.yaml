@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: shipping
+    tier: app
+data:
+  CART_ENDPOINT: "cart:8080"
+  DB_HOST: "mysql"
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: roboshop
+  ##deployment labels
+  labels:
+    project: roboshop
+    component: shipping
+    tier: app
+spec:
+  ReplicaSet: 1
+  # These are the labels replica set use to create pod replicas, this should match pod labels
+  selector:
+    matchLabels:
+      project: roboshop
+      component: shipping
+      tier: app
+      
+# This is pod definition
+  template:
+    metadata:
+      project: roboshop
+      component: shipping
+      tier: app
+    spec:
+      containers:
+        - name: shipping
+          image: saitejarageti/shipping:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: shipping
+    tier: app
+spec:
+  selector:
+    project: roboshop
+    component: shipping
+    tier: app
+    
+  ports:
+    - protocol: TCP
+      port: 8080 ##serviceport
+      targetPort: 8080 ##containerport
+

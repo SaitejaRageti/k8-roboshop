@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: roboshop
+  ##deployment labels
+  labels:
+    project: roboshop
+    component: redis
+    tier: database
+spec:
+  ReplicaSet: 1
+  # These are the labels replica set use to create pod replicas, this should match pod labels
+  selector:
+    matchLabels:
+      project: roboshop
+      component: redis
+      tier: database
+      
+# This is pod definition
+  template:
+    metadata:
+      project: roboshop
+      component: redis
+      tier: database
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: redis
+    tier: database
+spec:
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: database
+    
+  ports:
+    - protocol: TCP
+      port: 6379 ##serviceport
+      targetPort: 6379 ##containerport
+
