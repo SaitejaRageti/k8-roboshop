@@ -41,7 +41,7 @@ metadata:
 spec:
   selector:
     project: roboshop
-    component: mongodb
+    component: redis
     tier: database
     
   ports:
