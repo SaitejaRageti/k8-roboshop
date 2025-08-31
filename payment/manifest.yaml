@@ -25,7 +25,7 @@ metadata:
     component: payment
     tier: app
 spec:
-  ReplicaSet: 1
+  replicas: 1
   # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
