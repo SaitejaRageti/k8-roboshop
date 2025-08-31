@@ -103,7 +103,6 @@ spec:
         - name: frontend
           image: saitejarageti/frontend:v1
           ports:
-            - containerport: 8080
           securityContext:
             runAsUser: 0
 
