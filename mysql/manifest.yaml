@@ -21,7 +21,7 @@ metadata:
     component: mysql
     tier: database
 spec:
-  ReplicaSet: 1
+  replicas: 1
   # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
@@ -32,9 +32,10 @@ spec:
 # This is pod definition
   template:
     metadata:
-      project: roboshop
-      component: mysql
-      tier: database
+      labels:
+        project: roboshop
+        component: mysql
+        tier: database
     spec:
       containers:
         - name: mysql
