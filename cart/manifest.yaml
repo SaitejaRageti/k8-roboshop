@@ -42,6 +42,9 @@ spec:
       containers:
         - name: cart
           image: saitejarageti/cart:v1
+      envFrom:
+            - configMapRef:
+                name: cart   
 ---
 apiVersion: v1
 kind: Service
