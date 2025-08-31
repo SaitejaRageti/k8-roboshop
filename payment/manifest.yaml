@@ -36,9 +36,10 @@ spec:
 # This is pod definition
   template:
     metadata:
-      project: roboshop
-      component: payment
-      tier: app
+      labels:
+        project: roboshop
+        component: payment
+        tier: app
     spec:
       containers:
         - name: payment
