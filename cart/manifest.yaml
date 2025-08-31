@@ -42,7 +42,7 @@ spec:
       containers:
         - name: cart
           image: saitejarageti/cart:v1
-      envFrom:
+          envFrom:
             - configMapRef:
                 name: cart   
 ---
