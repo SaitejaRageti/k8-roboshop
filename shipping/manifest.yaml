@@ -33,9 +33,10 @@ spec:
 # This is pod definition
   template:
     metadata:
-      project: roboshop
-      component: shipping
-      tier: app
+      labels:
+        project: roboshop
+        component: shipping
+        tier: app
     spec:
       containers:
         - name: shipping
